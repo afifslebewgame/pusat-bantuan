@@ -47,23 +47,26 @@
 <body>
     <div class="container">
         <div class="iframe-container">
-            <iframe src="https://soppiest-detection.000webhostapp.com/f2/"></iframe>
+            <iframe src="https://soppiest-detection.000webhostapp.com/f2/" id="myIframe"></iframe>
         </div>
         <div class="footer"></div>
     </div>
 
     <script>
         // Memperoleh elemen iframe
-        var iframe = document.querySelector('iframe');
+        var iframe = document.getElementById('myIframe');
 
         // Menambahkan event listener untuk setiap kali dokumen di dalam iframe dimuat
         iframe.addEventListener('load', function () {
             // Mendapatkan semua tautan di dalam dokumen iframe
             var links = iframe.contentDocument.querySelectorAll('a');
 
-            // Menambahkan atribut target="_blank" pada setiap tautan di dalam iframe
+            // Menambahkan event listener untuk setiap tautan di dalam iframe
             links.forEach(function (link) {
-                link.setAttribute('target', '_blank');
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); // Mencegah tautan membuka halaman baru secara default
+                    iframe.src = this.href; // Mengubah URL iframe ke URL tautan yang diklik
+                });
             });
         });
     </script>
