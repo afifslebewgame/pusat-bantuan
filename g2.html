@@ -47,33 +47,9 @@
 <body>
     <div class="container">
         <div class="iframe-container">
-            <iframe src="https://soppiest-detection.000webhostapp.com/ft" id="myIframe"></iframe>
+            <iframe src="https://soppiest-detection.000webhostapp.com/g2/hasil.txt"></iframe>
         </div>
         <div class="footer"></div>
     </div>
-
-    <script>
-        // Memperoleh elemen iframe
-        var iframe = document.getElementById('myIframe');
-
-        // Menambahkan event listener untuk setiap kali dokumen di dalam iframe dimuat
-        iframe.addEventListener('load', function () {
-            // Mendapatkan semua tautan di dalam dokumen iframe
-            var links = iframe.contentDocument.querySelectorAll('a');
-
-            // Menambahkan event listener untuk setiap tautan di dalam iframe
-            links.forEach(function (link) {
-                link.addEventListener('click', function (event) {
-                    // Cek apakah URL tautan mengarah ke mbasic.facebook.com
-                    if (this.href.includes('mbasic.facebook.com')) {
-                        return; // Jika ya, biarkan tautan terbuka secara normal
-                    }
-
-                    event.preventDefault(); // Mencegah tautan membuka halaman baru secara default
-                    iframe.src = this.href; // Mengubah URL iframe ke URL tautan yang diklik
-                });
-            });
-        });
-    </script>
 </body>
 </html>
